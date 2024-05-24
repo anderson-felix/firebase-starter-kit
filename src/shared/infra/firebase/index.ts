@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
-import * as admin from 'firebase-admin';
-import * as fireorm from 'fireorm';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc, collection } from 'firebase/firestore';
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyBoalDDHkIQCr9sAqJ5LN96k8OfnhaN4m4',
   authDomain: 'clustfy-420.firebaseapp.com',
@@ -12,10 +17,5 @@ const firebaseConfig = {
   measurementId: 'G-P4587RW79F',
 };
 
-admin.initializeApp({
-  credential: admin.credential.cert(JSON.stringify(firebaseConfig)),
-  databaseURL: `https://${firebaseConfig.projectId}.firebaseio.com`,
-});
-
-const firestore = admin.firestore();
-fireorm.initialize(firestore);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
